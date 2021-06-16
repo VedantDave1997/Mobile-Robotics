@@ -1,3 +1,0 @@
-[velPub, velMsg] = rospublisher('/mobile_base/commands/velocity');
-velMsg.Linear.X=0.2;
-send(velPub,velMsg);
