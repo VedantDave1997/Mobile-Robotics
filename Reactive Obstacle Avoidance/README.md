@@ -3,7 +3,7 @@ The MATLAB publishes the message on the topic '/mobile_base/command_velocity' an
 receives these motion command messages and moves the simulated robot according to the
 commanded velocities.<br /><br />
 
-####Robot Movement with Publisher
+<h3>Robot Movement with Publisher</h3>
 The Movement of the Robot takes place in the following manner:
 - Create a publisher for the '/mobile_base/commands/velocity' topic. Create
 an empty message velMsg for that topic. Set the X-component of linear velocity field of the velMsg.Linear.X.
@@ -16,7 +16,7 @@ the command velocity executes for a time interval t = d/v seconds. A rate
 object with a rate that is inverse proportional to that time interval is utilised.
 - The Robot is also rotated on the spot with a particular angular velocity.<br /><br />
 
-####Callback Subscriber for Laser Scan Messages
+<h3>Callback Subscriber for Laser Scan Messages</h3>
 We now focus with subscribing to the '/laserScan' topic and processing
 the laser scan message with a Callback function.<br /> The 'sensor_msgs/LaserScan.msg' is
 mapped onto a handle object of type ScanHandle which is composed of the properties
@@ -31,12 +31,13 @@ obstacle. The relevance of an obstacle depends on its proximity to the robot but
 also to the relative heading. Nearby obstacles in longitudinal direction are far
 more relevant for obstacle avoidance than remote obstacles or obstacles in lateral
 direction.  Thus the scaled obstacle distance is given by<br />
-<img src="https://render.githubusercontent.com/render/math?math=\hat{r}_i = (r_i - r_{robot})(1-\beta cos(\phi_i))"><br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=\hat{r}_i = (r_i - r_{robot})(1-\beta cos(\phi_i))">
 The robot radius r<sub>robot</sub> is subtracted from the range readings r<sub>i</sub> as those measure the distance to the center of the robot
 rather than the distance to the robots perimeter.
 
-####Reactive Obstacle Avoidance
-This is a simple obstacle avoidance behavior which is in terms of a functional mapping between
-the laser range readings (Subscriber '/laser_scan') and the motor actions (Publisher
-'/mobile_base/commands/velocity'). Reutilize the handle class, the subscriber Callback
-and the function nearestObstacle from the previous assignments.
+<h3>Reactive Obstacle Avoidance</h3>
+This is a simple obstacle avoidance behavior which is in terms of a functional mapping between the laser range readings (Subscriber '/laser_scan') and the motor actions (Publisher '/mobile_base/commands/velocity'). Reutilize the handle class, the subscriber Callback and the function nearestObstacle from the previous assignments. The linear velocity v is reduced with decreasing range reading and eventually becomes zero at a stopping distance r<sub>stop</sub>. The robot is supposed
+to stop if the scaled obstacle distance is below the threshold distance i.e. 
+<img src="https://render.githubusercontent.com/render/math?math=\hat{r}_{min} = r_{min}(1-\beta cos(\phi_{min})) < r_{stop}">
+The limitations are shown with the intuitive image below:
+![Alt text](Figures/Reactive_obst.JPG?raw=true "Title")
