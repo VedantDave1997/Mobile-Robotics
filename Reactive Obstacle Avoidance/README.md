@@ -58,4 +58,3 @@ These equations establish a purely reactive, memoryless behavior in which contro
 <p align="center">
   <img src="Figures/rot_sign.JPG" width="350" title="hover text">
 </p>
-
