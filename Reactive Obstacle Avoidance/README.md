@@ -40,7 +40,9 @@ This is a simple obstacle avoidance behavior which is in terms of a functional m
 to stop if the scaled obstacle distance is below the threshold distance i.e. 
 <img src="https://render.githubusercontent.com/render/math?math=\hat{r}_{min} = r_{min}(1-\beta cos(\phi_{min})) < r_{stop}">
 The limitations are shown with the intuitive image below:
-![Alt text](Figures/Reactive_obst.JPG?raw=true "Title")
+<p align="center">
+  <img src="Figures/Reactive_obst.JPG" width="450" title="hover text">
+</p>
 This is a simple obstacle avoidance behavior which is in terms of a functional mapping between
 the laser range readings (Subscriber '/laser_scan') and the motor actions (Publisher
 '/mobile_base/commands/velocity'). Reutilize the handle class, the subscriber Callback
