@@ -1,20 +1,13 @@
-In this Section, initially the publisher-subscriber communication between the ROS and the MATLAB is developed.
-The MATLAB publishes the message on the topic '/mobile_base/command_velocity' and a ROS subscriber
-receives these motion command messages and moves the simulated robot according to the
-commanded velocities.<br /><br />
+In this Section, <br /><br />
 
-<h3>Robot Movement with Publisher</h3>
-The Movement of the Robot takes place in the following manner:
-- Create a publisher for the '/mobile_base/commands/velocity' topic. Create
-an empty message velMsg for that topic. Set the X-component of linear velocity field of the velMsg.Linear.X.
- Publish the message with the command 'send'. The robot should start moving in a straight line. 
- Stop the robot by sending a new message with zero linear velocity.
-- Move the robot in a straight line for a specified distance at a specified linear velocity.
-The input argument velPub denotes the publisher. The distance traveled by the robot is controlled in an open loop fashion by dead
-reckoning as product of commanded velocity and time. The forward motion with
-the command velocity executes for a time interval t = d/v seconds. A rate
-object with a rate that is inverse proportional to that time interval is utilised.
-- The Robot is also rotated on the spot with a particular angular velocity.<br /><br />
+<h3>Motion Control</h3>
+Motion control of a mobile robot is concerned with tracking a feasible reference state
+trajectory. The mobile robot regulates its planar pose via the control of its motors in
+terms of velocity commands. The approaches rest upon feedback control of the actual
+robots pose either w.r.t. a global fixed frame or w.r.t. the reference trajectory. A nonholonomic
+robot possesses fewer local degrees of freedom than global degrees of freedom. The prototypical
+ mobile robot is the unicycle with controls v, ω and global pose xr, yr, θr governed by the 
+ kinematics
 
 <h3>Callback Subscriber for Laser Scan Messages</h3>
 We now focus with subscribing to the '/laserScan' topic and processing
