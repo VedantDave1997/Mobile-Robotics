@@ -36,8 +36,15 @@ The robot radius r<sub>robot</sub> is subtracted from the range readings r<sub>i
 rather than the distance to the robots perimeter.
 
 <h3>Reactive Obstacle Avoidance</h3>
+<<<<<<< HEAD
 This is a simple obstacle avoidance behavior which is in terms of a functional mapping between the laser range readings (Subscriber '/laser_scan') and the motor actions (Publisher '/mobile_base/commands/velocity'). Reutilize the handle class, the subscriber Callback and the function nearestObstacle from the previous assignments. The linear velocity v is reduced with decreasing range reading and eventually becomes zero at a stopping distance r<sub>stop</sub>. The robot is supposed
 to stop if the scaled obstacle distance is below the threshold distance i.e. 
 <img src="https://render.githubusercontent.com/render/math?math=\hat{r}_{min} = r_{min}(1-\beta cos(\phi_{min})) < r_{stop}">
 The limitations are shown with the intuitive image below:
 ![Alt text](Figures/Reactive_obst.JPG?raw=true "Title")
+=======
+This is a simple obstacle avoidance behavior which is in terms of a functional mapping between
+the laser range readings (Subscriber '/laser_scan') and the motor actions (Publisher
+'/mobile_base/commands/velocity'). Reutilize the handle class, the subscriber Callback
+and the function nearestObstacle from the previous assignments.
+>>>>>>> 8266964bad3e208e7e6c61ee19718fa2351cb745
