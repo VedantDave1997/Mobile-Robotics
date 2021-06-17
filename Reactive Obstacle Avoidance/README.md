@@ -3,6 +3,7 @@ The MATLAB publishes the message on the topic '/mobile_base/command_velocity' an
 receives these motion command messages and moves the simulated robot according to the
 commanded velocities.<br /><br />
 
+<h1>heading</h1>
 ####Robot Movement with Publisher
 The Movement of the Robot takes place in the following manner:
 - Create a publisher for the '/mobile_base/commands/velocity' topic. Create
