@@ -57,7 +57,7 @@ to the goal.
 
 The fundamental relationship between scaled minimum range reading and turn rate &omega; is such that the magnitude of the turn rate increases with decreasing range reading. The robot is supposed to turn at maximum turn rate  &omega; =  &omega;<sub>max</sub> if the scaled obstacle distance r<sub>min</sub> is short of a distance r<sub>turn</sub>. The robot moves straight &omega; = 0 if the scaled obstacle distance exceeds a safe range r<sub>safe</sub>. In between r<sub>safe</sub> and r<sub>turn</sub> the robots turn rate increases linearly from &omega; = 0 to &omega; = &omega;<sub>max</sub>.
 <p align="center">
-  <img src="Figures/ang_vel_limit.JPG" width="450" title="hover text">
+  <img src="Figures/Robot Homing.JPG" width="450" title="hover text">
 </p>
 The sign of the turn rate depends on the obstacle direction &phi;<sub>min</sub> under which the nearest obstacle emerges w.r.t. the robocentric frame. The robot is supposed to turn away from the obstacle. Thus the sign of the turn rate &omega; is opposite to the sign of the obstacle direction &phi;<sub>min</sub>.
 <img src="https://render.githubusercontent.com/render/math?math=\omega = sgn(\phi_{min})|\omega|">
