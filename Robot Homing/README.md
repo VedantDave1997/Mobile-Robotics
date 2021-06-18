@@ -114,3 +114,26 @@ The resulting path generated due to the Goal pose constraint is shown in the fig
 </p>
 
 <h3>Pure Pursuit Tracking Algorithm</h3>
+The pure pursuit algorithm has the objective to guide a robot along a reference path. Pure pursuit 
+is a path tracking scheme that determines the curvature of the robot path that guides the robot from 
+its current pose to the goal pose. For that purpose the scheme considers a dynamic goal position on 
+the path located some distance ahead of the robots current position. The robot is supposed to chase 
+the moving goal point (look ahead point) on the path. This strategy is similar to human drivers that 
+steer a vehicle towards a dynamic lookahead point on the road, which distance depends on the vehicle
+speed, road curvature and visibility.<br/><br/>
+In compliance with ROS transforms the x-axis of coordinate frame coincides with robots current 
+heading and the y-axis with the axle connecting the two wheels. The vector (x<sub>r</sub> − x, y<sub>r</sub> − y) 
+denotes the location of the lookahead (goal) point in the robocentric frame, l denotes the lookahead 
+distance. In the following we consider all vectors to be expressed w.r.t. robot base frame. The 
+algorithm calculates the radius of the arc that connects the origin of the robocentric frame with 
+the goal point. The following relationships hold:<br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=\rho^2 = (x_g-x_r)^2 %2B  (y_g-y_r)^2 = {x^{(r)}}^2_g %2B  {y^{(r)}}^2_g">
+<img src="https://render.githubusercontent.com/render/math?math=r = y_g - y_r %2B d = y^{(r)}_g %2B d">
+the first one is the distance to the lookahead point, the second relates the radius of the arc r and
+the lateral offset of the robot y<sub>g</sub> − y<sub>r</sub> from the goal point. Combining the 
+equations and solving for the searched radius r yields:
+<img src="https://render.githubusercontent.com/render/math?math=r = \frac{\rho^2}{2y^{(r)}_g}">
+The following figure shows the Geometry of the Pure Pursuit Algorithm:
+<p align="center">
+  <img src="Figures/Pure Pursuit Algorithm.JPG" width="450" title="hover text">
+</p>
