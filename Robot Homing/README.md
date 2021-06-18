@@ -137,3 +137,16 @@ The following figure shows the Geometry of the Pure Pursuit Algorithm:
 <p align="center">
   <img src="Figures/Pure Pursuit Algorithm.JPG" width="450" title="hover text">
 </p>
+The remaining issue is to determine the lateral offset of the robot w.r.t. to the reference path.
+The implementation involves the following step:
+<ul>
+  <li>Find the point (x<sub>p</sub>, y<sub>p</sub>) on the path closest to the current robot position</li>
+  <li>Determine the lookahead point (x<sub>r</sub>, y<sub>r</sub>) on the path</li>
+  <li>Transform the lookahead point into robocentric coordinates</li>
+  <li>Select a constant velocity v and compute turn rate ω from curvature γ</li>
+</ul>
+The following figure shows the Look ahead point for a path composed of straight line segments with 
+look ahead point on the next segment:
+<p align="center">
+  <img src="Figures/Look Ahead Path.JPG" width="450" title="hover text">
+</p>
