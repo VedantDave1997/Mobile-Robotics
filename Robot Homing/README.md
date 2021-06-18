@@ -1,4 +1,7 @@
-In this Section, <br /><br />
+In this Section, we initially discuss controlling the robot velocity and path simply through the velocity
+command. Then the robot is subjected to the constraint of reaching a certain Goal pose. This results
+into control of linear and angular velocity throughout the path for ensuring smooth motion. Another 
+approach is Pure Pursuit method that takes look-ahead points in the path into account.<br /><br />
 
 <h3>Motion Control</h3>
 Motion control of a mobile robot is concerned with tracking a feasible reference state
