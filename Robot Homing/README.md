@@ -53,16 +53,23 @@ in terms of x<sub>g</sub>, y<sub>g</sub>, θ<sub>g</sub>.<br/><br/>
 Homing considers the current position and heading of the robot relative to a desired position and 
 calculates a motion command based on their difference. The turn rate ω regulates the heading error
 towards the goal point α to zero, the forward velocity is proportional to the Euclidean distance ρ
-to the goal.
-
-The fundamental relationship between scaled minimum range reading and turn rate &omega; is such that the magnitude of the turn rate increases with decreasing range reading. The robot is supposed to turn at maximum turn rate  &omega; =  &omega;<sub>max</sub> if the scaled obstacle distance r<sub>min</sub> is short of a distance r<sub>turn</sub>. The robot moves straight &omega; = 0 if the scaled obstacle distance exceeds a safe range r<sub>safe</sub>. In between r<sub>safe</sub> and r<sub>turn</sub> the robots turn rate increases linearly from &omega; = 0 to &omega; = &omega;<sub>max</sub>.
+to the goal. The image below shows the Initial and Goal pose of the mobile robot.
 <p align="center">
   <img src="Figures/Robot Homing.JPG" width="450" title="hover text">
 </p>
-The sign of the turn rate depends on the obstacle direction &phi;<sub>min</sub> under which the nearest obstacle emerges w.r.t. the robocentric frame. The robot is supposed to turn away from the obstacle. Thus the sign of the turn rate &omega; is opposite to the sign of the obstacle direction &phi;<sub>min</sub>.
-<img src="https://render.githubusercontent.com/render/math?math=\omega = sgn(\phi_{min})|\omega|">
-
-These equations establish a purely reactive, memoryless behavior in which controls only depend on the current perception. It leads to robot getting stuck in corners by turning back and forth as&phi;<sub>min</sub> switches sign for the nearest obstacle to the left and right.  The current turning direction is maintained until the robot clears itself from the obstacle. The control law becomes:
+We calculates the pose error in polar coordinates ρ, α from the pose messages <i>navGoalMsg</i>. 
+Then we determine the goal pose in robo-centric coordinates by transforming the entity <i>navGoalMsg</i>
+specified w.r.t. map frame to the ’base_link’ with the function transform. (see lab Robotics System Toolbox III).
+Then we obtain the resulting goal pose x<sup>(r)</sup><sub>g</sub>, y<sup>(r)</sup><sub>g</sub>, 
+θ<sup>(r)</sup><sub>g</sub> with the function <i>PoseStampedMsg2Pose</i>. The goal position error 
+becomes:<br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=\rho = \sqrt{{x^{(r)}}^2_g %2B {y^{(r)}}^2_g}">
+<img src="https://render.githubusercontent.com/render/math?math=\alpha = \atan2(y^{(r)}_g,x^{(r)}_g)">
+We then implement a simple proportional controller to regulate the heading error α and
+the translational error ρ to zero.<br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=v = \kappa_\rho \rho">
+<img src="https://render.githubusercontent.com/render/math?math=\omega = \kappa_\alpha \alpha">
+The plot of the evolution of the pose error [ρ, α] over time is shown below.
 <p align="center">
-  <img src="Figures/rot_sign.JPG" width="350" title="hover text">
+  <img src="Figures/Error_vs_Params.JPG" width="450" title="hover text">
 </p>
