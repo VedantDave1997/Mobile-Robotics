@@ -108,3 +108,9 @@ stabilization is shown in the figure below.
 <p align="center">
   <img src="Figures/Robot Homing Goal.JPG" width="450" title="hover text">
 </p>
+The resulting path generated due to the Goal pose constraint is shown in the figure below.
+<p align="center">
+  <img src="Figures/Robot Path Results.JPG" width="450" title="hover text">
+</p>
+
+<h3>Pure Pursuit Tracking Algorithm</h3>
