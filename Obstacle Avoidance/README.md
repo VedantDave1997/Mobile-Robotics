@@ -104,4 +104,20 @@ require an ongoing turning. Thus the linear velocity v is reduced to v<sub>red</
 the turn rate:<br/><br/>
 <img src="https://render.githubusercontent.com/render/math?math=v_{red} =  v(1-|\omega|/\omega_{max}) %2B v_{min} "><br/><br/>
 in which v denotes the linear velocity, ω<sub>max</sub> denotes the maximum admissible turn rate and
-v<sub>min</sub> is a small non-zero velocity offset.
+v<sub>min</sub> is a small non-zero velocity offset.<br/><br/>
+The steering direction k<sub>sol</sub> is mapped onto the turn rate:<br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=\omega=  sat(k_\omega \theta_{k_{sol}}) "><br/><br/>
+in which θ<sub>k<sub>sol</sub></sub> denotes the direction of the bisector of the solution sector
+k<sub>sol</sub> in the robo-centric frame. In case 4 the robot stops and rotates in place v = 0, 
+ω = ω<sub>max</sub>. <br/><br/>
+
+The goal pose in robo-centric coordinates is obtained by mapping the navigation goal pose 
+(topic <i>/move_base_simple/goal</i>) into the robo-centric frame base_link using the appropriate 
+transform. The motion commands are published on the topic <i>/mobile_base/commands/velocity</i>.
+The callback function <b>scanCallback</b> determines the steering direction from the scan message 
+by means of VFH. The steering directionn and obstacle distance is mapped onto the corresponding 
+motion command in terms of velocity and turn rate. The velocity command is published on the topic 
+<i>/mobile_base/commands/velocity</i>. The callback function obtains a reference to a <i>PoseHandle</i> 
+object by which it reports the navigation goal pose in the robo-centric frame back to the main program.
+The main loop is governed by a rate object merely monitors progress towards the goal and terminates 
+once the navigation goal is reached
