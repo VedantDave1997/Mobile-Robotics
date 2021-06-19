@@ -66,16 +66,25 @@ of <i>sectormidpoints</i> with linspace at equally spaced angular interval and t
 <i>sectorstartpoints</i> as the lower bound of the sector intervals. The range data is filtered by 
 selecting only the range data with r<sub>i</sub> < r<sub>max</sub>. The vector of <i>weightedranges</i>
 is calculated from from the <i>validranges</i>, <i>rmax</i> and <i>alpha</i>. A histogram is generated
-and bins and edges are calculated from the angles with <i>histcounts</i>. The histogram generated from the
-data is shown below:
+and bins and edges are calculated from the angles with <i>histcounts</i>. The set of candidate directions
+denoted by the term candidate valley is determined as the set of adjacent sectors S for the histogram
+components below a threshold. The logical array of occupied sectors occupiedsectors (non candidate 
+valleys) with a polar density above the threshold  h > h<sub>max</sub> is determined. The histogram 
+generated from the data is shown below:
 <p align="center">
   <img src="Figures/Histogram VFH.JPG" width="350" title="hover text">
 </p>
-
-
-
-
-
-
-
-
+The optimal direction is selected from the candidate valley according to the goal sector
+and the following heuristics. Four distinctive cases are investigated in sequence:
+<ul>
+  <li>The goal sector k<sub>target</sub> is within the selected valley. Solution: k<sub>sol</sub> 
+  = k<sub>target</sub> , where k<sub>target</sub> is the sector that contains the goal location.</li>
+  <li> The goal sector is not in the selected valley and the number of sectors that form the candidate
+   valley is greater than m. Solution: k<sub>sol</sub> = k<sub>i</sub> ± m/2, where m is a fixed number
+   of sectors and k<sub>i</sub> the sector of the valley closer to the target sector k<sub>target</sub>.</li>
+  <li>The goal sector is not in the selected valley and the number of sectors of the valley is lower or
+   equal to m. Solution: k<sub>sol</sub> = (k<sub>i</sub> + k<sub>j</sub>)/2 is the bisector of
+   k<sub>i</sub> and k<sub>j</sub> j which denote the extreme sectors of the valley. </li>
+  <li>The candidate valley S = &Phi; is empty. The robot rotates in place and scans its environment
+   until an obstacle free direction is perceived. </li>
+</ul>
