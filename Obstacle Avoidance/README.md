@@ -1,5 +1,8 @@
-In this Section, we initially discuss controlling the robot velocity and path simply through the velocity
-command. Then the robot is subjected to the constraint o<br /><br />
+In this Section, we compute a collision-free motion of the robot that reaches the target pose complying
+the constraints of the mobile robot. We will use the Laser data from the sensor attached on the robot.
+The Vector Field Histogram method is used to find the path to the target that does not results into
+collision. Finally we implement reactive obstacle avoidance and combine it with the VFH for optimal 
+motion.<br /><br />
 
 <h3>Motion Planning and Obstacle Avoidance</h3>
 Motion planning is concerned with the computation of a collision-free trajectory to the target 
