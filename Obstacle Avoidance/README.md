@@ -88,3 +88,20 @@ and the following heuristics. Four distinctive cases are investigated in sequenc
   <li>The candidate valley S = &Phi; is empty. The robot rotates in place and scans its environment
    until an obstacle free direction is perceived. </li>
 </ul>
+
+After the VFH generation, we implement a reactive obstacle avoidance behavior based on the vector
+field histogram and determine an appropriate turn rate ω that turns towards the desired steering
+direction and a safe linear velocity. Let h'<sub>c</sub> denote the smoothed polar obstacle density 
+in the current direction of travel. Large values of h'<sub>c</sub> indicate that either a large 
+obstacle lies ahead or a smaller obstacle is close to the robot. Either case demands a sharp turn of
+the robot. This is achieved by a reduction of the linear velocity in order to allow completion of the 
+turn towards the novel direction. The linear velocity is determined according to:<br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=v =  v_0 max(0,(1-h'_c/h_m))"><br/><br/>
+and h<sub>m</sub> is an empirical parameter that achieves the desired reduction in speed.
+The above control law reduces the linear velocity of the robot in anticipation of an steering
+manœuver. We then consider that steering directions that deviate from the current robots heading 
+require an ongoing turning. Thus the linear velocity v is reduced to v<sub>red</sub> in proportion to 
+the turn rate:<br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=v_{red} =  v(1-|\omega|/\omega_{max}) %2B v_{min} "><br/><br/>
+in which v denotes the linear velocity, ω<sub>max</sub> denotes the maximum admissible turn rate and
+v<sub>min</sub> is a small non-zero velocity offset.
