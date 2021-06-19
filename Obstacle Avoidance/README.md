@@ -109,7 +109,7 @@ The steering direction k<sub>sol</sub> is mapped onto the turn rate:<br/><br/>
 <img src="https://render.githubusercontent.com/render/math?math=\omega=  sat(k_\omega \theta_{k_{sol}}) "><br/><br/>
 in which θ<sub>k<sub>sol</sub></sub> denotes the direction of the bisector of the solution sector
 k<sub>sol</sub> in the robo-centric frame. In case 4 the robot stops and rotates in place v = 0, 
-ω = ω<sub>max</sub>. <br/><br/>
+ω = ω<sub>max</sub>.<br/>
 
 The goal pose in robo-centric coordinates is obtained by mapping the navigation goal pose 
 (topic <i>/move_base_simple/goal</i>) into the robo-centric frame base_link using the appropriate 
@@ -120,4 +120,4 @@ motion command in terms of velocity and turn rate. The velocity command is publi
 <i>/mobile_base/commands/velocity</i>. The callback function obtains a reference to a <i>PoseHandle</i> 
 object by which it reports the navigation goal pose in the robo-centric frame back to the main program.
 The main loop is governed by a rate object merely monitors progress towards the goal and terminates 
-once the navigation goal is reached
+once the navigation goal is reached.
