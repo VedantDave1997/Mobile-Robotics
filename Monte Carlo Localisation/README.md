@@ -78,7 +78,7 @@ relationship between consecutive poses and the three elementary motions is given
 The motion model samples transitions by considering the hypothesized particle transition as a noisy 
 version of the nominal transformation obtained from odometry. For that purpose zero mean Gaussian 
 noise is added to [δ<sub>trans</sub> δ<sub>rot1</sub> δ<sub>rot2</sub>] which variance is proportional to the magnitude of the motion
-itself.<br/><br/>   
+itself.<br/><br/> 
 <img src="https://render.githubusercontent.com/render/math?math=\delta*_{trans} = \delta_{trans} %2B  \mathcal{N}(0,\alpha_3 \delta_{trans} %2B \alpha_4(\delta_{rot1} %2B \delta_{rot2}))"><br/>
 <img src="https://render.githubusercontent.com/render/math?math=\delta*_{rot1} = \delta_{rot1} %2B \mathcal{N}0,\alpha_2 \delta_{trans} %2B \alpha_1\delta_{rot1})"><br/>
 <img src="https://render.githubusercontent.com/render/math?math=\delta*_{rot2} = \delta_{rot2} %2B  \mathcal{N}(0,\alpha_2 \delta_{trans} %2B \alpha_1\delta_{rot2})"><br/><br/>
@@ -108,7 +108,7 @@ The range finder sensor model considers the causes of range readings:
 </ul>
 The mixture distribution reflects the superposition of the four possible causes for a range 
 reading z:<br/><br/>
-<img src="https://render.githubusercontent.com/render/math?math=p(z|z_{exp},m) = \alpha_{hit}p_{hit}(z|z_{exp},m) %2B \alpha_{rnd}p_{rnd}(z|z_{exp},m) %2B \alpha_{unexp}p_{unexp}(z|z_{exp},m) %2B \alpha_{max}p_{max}(z|z_{exp},m) "><br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=p(z|z_{exp},m) = \alpha_{hit}p_{hit}(z|z_{exp},m) %2B \alpha_{rnd}p_{rnd}(z|z_{exp},m) %2B \alpha_{unexp}p_{unexp}(z|z_{exp},m) %2B \alpha_{max}p_{max}(z|z_{exp},m) "><br/>
 
 The mixture weights α<sub>hit</sub>, α<sub>unexp</sub>, α<sub>max</sub>, α<sub>rnd</sub> denote the
 relative contribution of the individual causes such that:<br/><br/>
@@ -127,7 +127,7 @@ Assume a set of data of observed readings z<sub>i</sub> and expected readings z<
 The optimal parameters of the model are those that best explain the observations, exhibiting the 
 highest likelihood of the data. Rather than to maximize the likelihood one maximizes the log 
 likelihood under the reasonable assumption of independence of observations.<br/><br/>
-<img src="https://render.githubusercontent.com/render/math?math=\beta* = argmax log P (Z|\beta,Z_{exp}) = argmax \Sigma_i log p (z_i|\beta,z_{exp,i})"><br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=\beta* = argmax log P (Z|\beta,Z_{exp}) = argmax \Sigma_i log p (z_i|\beta,z_{exp,i})">
 A similar maximum likelihood approach is used to determine the optimal parameters of the motion model
 α = [α<sub>1</sub>, <sub>2</sub>, α<sub>3</sub>, α<sub>4</sub>] from true robot motions and odometry
 information.
