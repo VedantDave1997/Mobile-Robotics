@@ -6,6 +6,15 @@ Stage simulator. We also utilise Rviz as the standard ROS tool for visualization
 scan data of a range finder. The Mathworks Robotics System Toolbox connects the ROS master and 
 subscribes to ROS nodes.
 
+<h3>Requirements</h3>
+<ul>
+  <li>Ubuntu 16.04</li>
+  <li>MATLAB</li>
+  <li>Robot Opearing System</li>
+  <li>Gazebo</li>
+  <li>Stage</li>  
+</ul>
+
 <h3>ROS</h3>
 ROS is an open-source, meta-operating system for your robot. It provides the common of an ordinary
 operating system, including hardware abstraction, low-level device control, implementation of
