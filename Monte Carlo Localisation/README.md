@@ -117,3 +117,17 @@ The result of the following implementation is shown below:
 <p align="center">
   <img src="Figures/AMCL.JPG" width="350" title="hover text">
 </p>
+
+<h3>Maximum Likelihood Estimate of Sensor Model Parameters</h3>
+It is difficult to obtain the parameter vector β = [α<sub>hit</sub>, α<sub>unexp</sub>, 
+α<sub>max</sub>, α<sub>rnd</sub>, σ, λ] of the sensor model from an analysis of the interactions
+between sensors and environment. Rather, the optimal parameters are obtained by a maximum likelihood
+estimate based on observed range readings of the robot at known poses and thus known z<sub>exp</sub>.
+Assume a set of data of observed readings z<sub>i</sub> and expected readings z<sub>exp,i</sub>. 
+The optimal parameters of the model are those that best explain the observations, exhibiting the 
+highest likelihood of the data. Rather than to maximize the likelihood one maximizes the log 
+likelihood under the reasonable assumption of independence of observations.<br/><br/>
+<img src="https://render.githubusercontent.com/render/math?math=\beta* = argmax log P (Z|\beta,Z_{exp}) = argmax \Sigma_i log p (z_i|\beta,z_{exp,i})"><br/><br/>
+A similar maximum likelihood approach is used to determine the optimal parameters of the motion model
+α = [α<sub>1</sub>, <sub>2</sub>, α<sub>3</sub>, α<sub>4</sub>] from true robot motions and odometry
+information.
