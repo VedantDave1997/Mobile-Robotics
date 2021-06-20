@@ -1,5 +1,8 @@
-In this Section, we initially discuss controlling the robot velocity and path simply through the velocity
-command. Then the robot is subjected to the constraint o<br /><br />
+In this Section, we try to to localize the robot in an unknown environment. We will implement the
+Monte Carlo Localization Filter algorithm by using the Odometry information and Range sensor information.
+The algorithm calculates the belief of the robot pose by a probability density function, which is 
+sample based, thus making it more accurate with every sample collected.<br /><br />
+
 <h3>Robot Localization</h3>
 Localization is concerned with estimating the robots pose w.r.t. a map of the environment. Dead 
 reckoning relies on odometry information to determine the relative motion of the robot. The new pose
@@ -46,7 +49,7 @@ captures the robot’s relative motion. The set of particles is maintained and u
 following process:
 <ul>
   <li>Particle poses [x, y, θ] are propagated based on incremental motion provided by odometry and the
-   detailed motion model <b>MotionModel</b>b>.</li>
+   detailed motion model <b>MotionModel</b>.</li>
   <li>The particle weights w are assigned based on the likelihood of receiving the range sensor reading
    for each particle. The <b>SensorModel</b> captures the probability of a sensor reading given the 
    location of obstacles according to the particles pose.</li>
